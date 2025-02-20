@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Multiplication Table</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                margin: 20px 0;
+                width: 50%;
+            }
+            th, td {
+                padding: 8px 12px;
+                text-align: center;
+                border: 1px solid #ddd;
+            }
+            th {
+                background-color: #f4f4f4;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Multiplication Table Generator</h1>
+        <form method="get">
+            <label for="number">Enter a number: </label>
+            <input type="number" id="number" name="number" min="1" required>
+            <input type="submit" value="Generate Table">
+        </form>
+
+        <?php
+            if (isset($_GET['number'])) {
+                $number = (int)$_GET['number'];
+
+                echo "<h2>Multiplication Table for $number</h2>";
+                echo "<table>";
+                echo "<tr><th>&nbsp;</th>"; // Empty cell for row headers
+
+                for ($i = 1; $i <= $number; $i++) {
+                    echo "<th>$i</th>";
+                }
+                echo "</tr>";
+
+                for ($i = 1; $i <= $number; $i++) {
+                    echo "<tr>";
+                    echo "<th>$i</th>"; // Row index
+
+                    for ($j = 1; $j <= $number; $j++) {
+                        echo "<td>" . ($i * $j) . "</td>";
+                    }
+
+                    echo "</tr>";
+                }
+
+                echo "</table>";
+            }
+        ?>
+    </body>
+</html>
